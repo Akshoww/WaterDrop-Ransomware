@@ -5,7 +5,7 @@ import os
 f = open(sys.argv[1], "x")
 
 with open(sys.argv[1], "w") as f:
-        f.write("oueoueoueeeee")
+        f.write("oue ")
 
 with open(sys.argv[1]) as f:
         print("Après modifications : ", f.read())
