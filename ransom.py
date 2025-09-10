@@ -2,15 +2,18 @@
 import sys
 import os
 
-f = open(sys.argv[1], "x")
 
-with open(sys.argv[1], "w") as f:
-        f.write("oue ")
+if len(sys.argv) > 1:
+	f = open(sys.argv[1], "x")
 
-with open(sys.argv[1]) as f:
-        print("Après modifications : ", f.read())
+	with open(sys.argv[1], "w") as f:
+        	f.write("oue ")
 
-print("Suppression...")
+	with open(sys.argv[1]) as f:
+        	print("Après modifications : ", f.read())
 
-os.remove(sys.argv[1])
+	print("Suppression...")
 
+	os.remove(sys.argv[1])
+else :
+	print("Veuillez ajouter un fichier en paramètre")
