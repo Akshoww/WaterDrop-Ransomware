@@ -14,13 +14,14 @@ if len(sys.argv) > 1:
 		for file in files:
 			file_list.append(os.path.join(root, file))
 
-	#encryption of all the files with "test" password (keep it !!!)
+	print("--------Results--------")
+	#decrypt of all the files with "test" password (or yours)
 	for file in file_list:
-		cmd = "openssl enc -e -aes-256-cbc -iter 10000 -pass pass:'test' -in " + file + " -out " + file
+		cmd = "openssl enc -d -aes-256-cbc -iter 10000 -pass pass:'test' -in " + file + " -out file_temp && mv file_temp " + file
 		subprocess.run(cmd, shell=True)
-		print("File encrypted :", file) 
+		print("  [+] File decrypted :", file) 
 
 		#delete script file
 		#os.remove(__file__)
 else :
-	print("Please select a directory to encrypt files")
+	print("Please select a directory to decrypt files")
