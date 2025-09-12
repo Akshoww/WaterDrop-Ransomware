@@ -1,19 +1,23 @@
 #!/usr/bin/env python3 
 import sys
 import os
+import subprocess
 
 
 if len(sys.argv) > 1:
-	f = open(sys.argv[1], "x")
+	
+	print("Fichier avant chiffrement : ", open(sys.argv[1]).read()) 
 
-	with open(sys.argv[1], "w") as f:
-        	f.write("oue ")
+	#chiffrement du fichier avec le mdp : tqt
+	cmd = "openssl enc -e -aes-256-cbc -iter 10000 -pass pass:'tqt' -in " + sys.argv[1] + " -out " + sys.argv[1]
+	subprocess.run(cmd, shell=True)
 
-	with open(sys.argv[1]) as f:
-        	print("Après modifications : ", f.read())
+	print("-------------------------------------")
 
-	print("Suppression...")
+	print("Fichier après chiffrement : ") 
+	print(subprocess.call(["cat",sys.argv[1]]))
 
-	os.remove(sys.argv[1])
+	#supprimer le script actuel
+	#os.remove(__file__)
 else :
 	print("Veuillez ajouter un fichier en paramètre")
